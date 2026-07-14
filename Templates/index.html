@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoPackAI - Sustainable Packaging Recommendation</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <!-- INPUT FORM -->
+    <div class="card shadow p-4 dashboard-card">
+        <h2 class="text-center text-success mb-4">EcoPackAI</h2>
+
+        <form id="recommendForm">
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Product Category</label>
+                    <select class="form-select" id="category" required>
+                        <option value="">Select</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="food">Food</option>
+                        <option value="cosmetics">Cosmetics</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Fragility</label>
+                    <select class="form-select" id="fragility" required>
+                        <option value="">Select</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Shipping Type</label>
+                    <select class="form-select" id="shipping" required>
+                        <option value="">Select</option>
+                        <option value="domestic">Domestic</option>
+                        <option value="international">International</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Sustainability Priority</label>
+                    <select class="form-select" id="sustainability" required>
+                        <option value="">Select</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success px-4">
+                    Get Recommendations
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- RESULTS SECTION -->
+    <div class="card shadow-sm p-4 mt-4 d-none results-card" id="resultsCard">
+
+        <h4 class="mb-3">Top Recommended Materials</h4>
+
+        <div id="results"></div>
+
+        <!-- Charts -->
+        <div class="chart-section">
+
+            <div id="verticalBar" class="chart-container"></div>
+            <div id="horizontalBar" class="chart-container"></div>
+            <div id="lineChart" class="chart-container"></div>
+            <div id="pieChart" class="chart-container"></div>
+
+        </div>
+
+        <!-- Export Buttons -->
+        <div class="text-center mt-4">
+            <a href="/export_excel" class="btn btn-outline-success me-2">
+                Export Excel (Full Ranking)
+            </a>
+            <a href="/export_pdf" class="btn btn-outline-danger">
+                Export PDF (Top 5)
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+</body>
+</html>

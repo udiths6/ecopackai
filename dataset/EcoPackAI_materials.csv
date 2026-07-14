@@ -1,0 +1,55 @@
+material_id,material_name,strength,weight_capacity,cost,biodegradability_score,co2_score,recyclability_percent
+1,Corrugated Cardboard,3,25,2,9,3,85
+2,Kraft Paper,2,15,1,8,4,80
+3,Recycled Paper,2,12,1,9,3,90
+4,Molded Pulp,2,10,2,10,2,95
+5,Bagasse,3,20,3,10,2,85
+6,PLA Bioplastic,2,8,4,8,4,70
+7,Cornstarch Packaging,1,5,3,9,3,60
+8,Bamboo Fiber,3,30,4,10,2,85
+9,Palm Leaf Packaging,3,18,4,10,2,80
+10,Jute Fabric,3,40,5,9,3,75
+11,Hemp Fiber,3,35,5,9,3,78
+12,Recycled PET,3,50,6,6,5,90
+13,Paperboard,2,15,2,8,4,82
+14,Cellulose Film,1,4,3,9,3,65
+15,Mushroom Packaging,2,12,4,10,1,90
+16,Seaweed Packaging,1,3,4,10,1,55
+17,Sugarcane Fiber,3,25,3,10,2,88
+18,Wheat Straw,2,14,3,9,3,80
+19,Rice Husk Packaging,2,16,3,9,3,78
+20,Recycled Aluminum,3,60,6,5,6,95
+21,Glass Packaging,3,70,7,4,7,100
+22,Wooden Crates,3,80,9,6,6,85
+23,Paper Foam,1,6,2,9,3,70
+24,Biodegradable Foam,1,5,2,8,4,60
+25,Cotton Fabric,2,20,4,8,4,75
+26,Banana Leaf,1,4,2,10,1,50
+27,Areca Leaf,2,10,3,10,2,75
+28,Coconut Coir,3,28,4,9,3,80
+29,Recycled Steel,3,90,10,5,7,95
+30,Paper Tubes,2,18,2,8,4,85
+31,Biodegradable Plastic,2,12,3,7,5,65
+32,Starch-based Film,1,4,3,9,3,60
+33,Paper Bags,1,7,1,8,4,80
+34,Reusable Cloth Bags,3,30,6,7,4,85
+35,Recycled Cotton,2,25,5,8,4,70
+36,Wood Pulp Trays,2,20,3,9,3,85
+37,Paper Egg Trays,1,6,1,9,3,90
+38,PLA Bottles,2,15,5,7,5,70
+39,Bio PET,3,40,6,6,6,90
+40,Recycled HDPE,3,45,6,5,6,95
+41,Cardboard Tubes,2,20,3,8,4,85
+42,Paper Cushions,1,5,2,9,3,75
+43,Wood Wool,1,6,2,9,3,70
+44,Eco Bubble Wrap,1,8,3,7,5,60
+45,Biodegradable Mailers,2,18,4,8,4,65
+46,Honeycomb Paper,2,22,3,9,3,85
+47,Paper Netting,1,6,2,9,3,80
+48,Recycled Corrugated Fiberboard,3,30,3,9,3,90
+49,Pinewood Boxes,3,85,9,6,6,80
+50,Eco Laminate Sheets,2,25,4,7,5,70
+51,Natural Rubber Packaging,3,35,7,8,4,75
+52,Bio Resin Packaging,2,20,5,7,5,65
+53,Grass Paper,2,18,2,9,3,85
+54,Kenaf Fiber Packaging,3,28,5,9,3,80

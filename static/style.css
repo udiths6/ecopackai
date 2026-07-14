@@ -1,0 +1,40 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+.dashboard-card {
+    border-radius: 12px;
+}
+
+.results-card {
+    border-radius: 12px;
+}
+
+.material-card {
+    border-left: 5px solid #198754;
+    transition: 0.3s ease;
+}
+
+.material-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.chart-section {
+    margin-top: 30px;
+}
+
+.chart-container {
+    margin-top: 25px;
+    height: 400px;
+}
+
+.btn-outline-success,
+.btn-outline-danger {
+    border-radius: 8px;
+}
