@@ -64,9 +64,9 @@ def apply_filters(data, category, fragility):
 
     filtered = data.copy()
 
-    # -----------------------------
-    # Filter based on Fragility
-    # -----------------------------
+    # =========================
+    # FRAGILITY FILTER
+    # =========================
 
     if fragility == "low":
         filtered = filtered[
@@ -83,68 +83,99 @@ def apply_filters(data, category, fragility):
             filtered["strength"] == 3
         ]
 
-
-    # -----------------------------
-    # Filter based on Product Category
-    # -----------------------------
+    # =========================
+    # ELECTRONICS
+    # =========================
 
     if category == "electronics":
 
-        allowed_materials = [
+        allowed = [
 
             "Corrugated Cardboard",
+            "Honeycomb Paper",
+            "Eco Bubble Wrap",
             "Molded Pulp",
-            "HDPE Plastic",
-            "PET Plastic",
-            "Honeycomb Cardboard",
-            "Recycled Cardboard"
+            "Paper Cushions",
+            "Paper Foam",
+            "Wood Wool",
+            "Wooden Crates",
+            "Pinewood Boxes",
+            "Cardboard Tubes",
+            "Recycled Corrugated Fiberboard",
+            "Recycled PET",
+            "Recycled HDPE",
+            "Glass Packaging",
+            "Bio PET"
 
         ]
 
         filtered = filtered[
-            filtered["material_name"].isin(
-                allowed_materials
-            )
+            filtered["material_name"].isin(allowed)
         ]
 
+
+    # =========================
+    # FOOD
+    # =========================
 
     elif category == "food":
 
-        allowed_materials = [
+        allowed = [
 
+            "Areca Leaf",
             "Bagasse",
+            "Banana Leaf",
             "Palm Leaf Packaging",
-            "Kraft Paper",
-            "Cornstarch Packaging",
-            "PLA Bioplastic",
+            "Sugarcane Fiber",
             "Bamboo Fiber",
-            "Cellulose Film"
+            "Rice Husk Packaging",
+            "Seaweed Packaging",
+            "PLA Bioplastic",
+            "PLA Bottles",
+            "Paper Bags",
+            "Paperboard",
+            "Paper Tubes",
+            "Cellulose Film",
+            "Cornstarch Packaging",
+            "Starch-based Film",
+            "Grass Paper",
+            "Mushroom Packaging"
 
         ]
 
         filtered = filtered[
-            filtered["material_name"].isin(
-                allowed_materials
-            )
+            filtered["material_name"].isin(allowed)
         ]
 
+
+    # =========================
+    # COSMETICS
+    # =========================
 
     elif category == "cosmetics":
 
-        allowed_materials = [
+        allowed = [
 
             "Paperboard",
+            "Cellulose Film",
             "PLA Bioplastic",
-            "Molded Pulp",
+            "Paper Tubes",
+            "Paper Bags",
+            "Bio Resin Packaging",
+            "Bio PET",
+            "Glass Packaging",
+            "Recycled PET",
             "Recycled Paper",
-            "Cellulose Film"
+            "Recycled Cotton",
+            "Cotton Fabric",
+            "Jute Fabric",
+            "Natural Rubber Packaging",
+            "Eco Laminate Sheets"
 
         ]
 
         filtered = filtered[
-            filtered["material_name"].isin(
-                allowed_materials
-            )
+            filtered["material_name"].isin(allowed)
         ]
 
     return filtered
