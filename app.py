@@ -149,11 +149,14 @@ def recommend():
             rf_cost.predict(features)[0]
         )
 
-        predicted_co2 = float(
-            xgb_co2.predict(
-                scaler.transform(features)
-            )[0]
-        )
+        predicted_co2 = max(
+    0,
+    float(
+        xgb_co2.predict(
+            scaler.transform(features)
+        )[0]
+    )
+)
 
         suitability = (
             0.4 * row["strength"] +
@@ -167,10 +170,10 @@ def recommend():
             suit_w * suitability
         )
 
-        co2_reduction = (
-            (baseline_co2 - predicted_co2)
-            / baseline_co2
-        ) * 100
+        co2_reduction = max(
+    0,
+    ((baseline_co2 - predicted_co2) / baseline_co2) * 100
+)
 
         cost_saving = baseline_cost - predicted_cost
 
