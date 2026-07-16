@@ -8,10 +8,16 @@ document.getElementById("recommendForm").addEventListener("submit", function (e)
     const sustainability = document.getElementById("sustainability").value;
 
     const data = {
-        category,
-        fragility,
-        shipping,
-        sustainability
+        category: category,
+        fragility: fragility,
+        shipping: shipping,
+        sustainability: sustainability,
+        weight: Number(
+            document.getElementById("weight").value
+        ),
+        required_strength: Number(
+            document.getElementById("strength").value
+        )
     };
 
     fetch("/recommend", {

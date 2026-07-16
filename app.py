@@ -137,26 +137,38 @@ def recommend():
     results = []
 
     for _, row in filtered_df.iterrows():
+        strength = max(
+            row["strength"],
+            data["required_strength"]
+        )
+
+        weight_capacity = max(
+            row["weight_capacity"],
+            data["weight"]
+        )
 
         features = np.array([[
-    row["strength"],
-    row["weight_capacity"],
-    row["biodegradability_score"],
-    row["recyclability_percent"]
-]], dtype=float)
+            strength,
+            weight_capacity,
+            row["biodegradability_score"],
+            row["recyclability_percent"]
+        ]], dtype=float)
 
-        predicted_cost = float(
-            rf_cost.predict(features)[0]
+        features_scaled = scaler.transform(features)
+
+        predicted_cost = round(
+            float(
+                rf_cost.predict(features_scaled)[0]
+            ),
+            2
         )
 
         predicted_co2 = round(
-    float(
-        xgb_co2.predict(
-            scaler.transform(features)
-        )[0]
-    ),
-    2
-)
+            float(
+                xgb_co2.predict(features_scaled)[0]
+            ),
+            2
+        )
 
         suitability = (
             0.4 * row["strength"] +
@@ -171,11 +183,14 @@ def recommend():
         )
 
         co2_reduction = round(
-    ((baseline_co2 - predicted_co2) / baseline_co2) * 100,
+            ((baseline_co2 - predicted_co2) / baseline_co2) * 100,
+            2
+        )
+
+        cost_saving = round(
+    baseline_cost - predicted_cost,
     2
 )
-
-        cost_saving = baseline_cost - predicted_cost
 
         results.append({
             "material": str(row["material_name"]),
@@ -198,7 +213,6 @@ def recommend():
     cursor = conn.cursor()
 
     for item in last_top5:
-
         cursor.execute(
             "INSERT INTO usage_log(material_name) VALUES(%s)",
             (item["material"],)

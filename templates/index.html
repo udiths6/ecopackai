@@ -70,6 +70,43 @@
                 </div>
             </div>
 
+            <div class="row mb-3">
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">
+                        Product Weight (kg)
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="weight"
+                        min="1"
+                        max="100"
+                        value="10"
+                        required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">
+                        Required Protection
+                    </label>
+
+                    <select
+                        class="form-select"
+                        id="strength"
+                        required>
+
+                        <option value="1">Low</option>
+                        <option value="2">Medium</option>
+                        <option value="3">High</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
             <div class="text-center">
                 <button type="submit" class="btn btn-success px-4">
                     Get Recommendations
