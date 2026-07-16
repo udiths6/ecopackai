@@ -64,23 +64,87 @@ def apply_filters(data, category, fragility):
 
     filtered = data.copy()
 
-    if fragility == "medium":
-        filtered = filtered[filtered["strength"] >= 2]
+    # -----------------------------
+    # Filter based on Fragility
+    # -----------------------------
 
-    elif fragility == "high":
-        filtered = filtered[filtered["strength"] == 3]
-
-    if category == "electronics":
-        filtered = filtered[filtered["strength"] >= 2]
-
-    elif category == "food":
+    if fragility == "low":
         filtered = filtered[
-            filtered["biodegradability_score"] >= 2
+            filtered["strength"] >= 1
         ]
 
-    elif category == "cosmetics":
+    elif fragility == "medium":
         filtered = filtered[
-            filtered["recyclability_percent"] >= 40
+            filtered["strength"] >= 2
+        ]
+
+    elif fragility == "high":
+        filtered = filtered[
+            filtered["strength"] == 3
+        ]
+
+
+    # -----------------------------
+    # Filter based on Product Category
+    # -----------------------------
+
+    if category == "electronics":
+
+        allowed_materials = [
+
+            "Corrugated Cardboard",
+            "Molded Pulp",
+            "HDPE Plastic",
+            "PET Plastic",
+            "Honeycomb Cardboard",
+            "Recycled Cardboard"
+
+        ]
+
+        filtered = filtered[
+            filtered["material_name"].isin(
+                allowed_materials
+            )
+        ]
+
+
+    elif category == "food":
+
+        allowed_materials = [
+
+            "Bagasse",
+            "Palm Leaf Packaging",
+            "Kraft Paper",
+            "Cornstarch Packaging",
+            "PLA Bioplastic",
+            "Bamboo Fiber",
+            "Cellulose Film"
+
+        ]
+
+        filtered = filtered[
+            filtered["material_name"].isin(
+                allowed_materials
+            )
+        ]
+
+
+    elif category == "cosmetics":
+
+        allowed_materials = [
+
+            "Paperboard",
+            "PLA Bioplastic",
+            "Molded Pulp",
+            "Recycled Paper",
+            "Cellulose Film"
+
+        ]
+
+        filtered = filtered[
+            filtered["material_name"].isin(
+                allowed_materials
+            )
         ]
 
     return filtered
