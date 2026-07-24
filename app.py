@@ -267,14 +267,25 @@ def recommend():
 
         suitability = (
             0.4 * row["strength"] +
-            0.3 * row["recyclability_percent"] +
+            0.3 * (row["recyclability_percent"] / 10) +
             0.3 * row["biodegradability_score"]
         )
 
-        final_score = (
-            cost_w * predicted_cost +
-            co2_w * predicted_co2 +
-            suit_w * suitability
+        cost_score = max(
+            0,
+            baseline_cost - predicted_cost
+        )
+
+        co2_score = max(
+            0,
+            baseline_co2 - predicted_co2
+        )
+
+        final_score = round(
+            cost_w * cost_score +
+            co2_w * co2_score +
+            suit_w * suitability,
+            2
         )
 
         co2_reduction = round(
@@ -283,9 +294,9 @@ def recommend():
         )
 
         cost_saving = round(
-    baseline_cost - predicted_cost,
-    2
-)
+            baseline_cost - predicted_cost,
+            2
+        )
 
         results.append({
             "material": str(row["material_name"]),
@@ -298,7 +309,8 @@ def recommend():
 
     results = sorted(
         results,
-        key=lambda x: x["final_score"]
+        key=lambda x: x["final_score"],
+        reverse=True
     )
 
     last_full_ranking = results
